@@ -50,6 +50,9 @@ public class FileUploadedServerlet extends HttpServlet {
                     File dir = new File(getServletContext().getRealPath("/WEB-INF"));
                     File file=new File(dir, fileItem.getName());
 //                    response.getWriter().println(file.getAbsolutePath());
+                    if(file.exists()){
+                        file.delete();
+                    }
                     fileItem.write(file);
                     files.add(file);
                 }
